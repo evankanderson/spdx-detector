@@ -30,7 +30,7 @@ jobs:
 
       - uses: google-github-actions/auth@v2
         with:
-            workload_identity_provider: projects//locations/global/workloadIdentityPools
+            workload_identity_provider: projects/2476835098/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions
             project_id: minder-zoo
 
       # Build and push the application
