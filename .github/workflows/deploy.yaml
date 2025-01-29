@@ -35,12 +35,13 @@ jobs:
 
       # Build and push the application
       - name: Build application
-        run: ko build
+        id: build
+        run: echo "::set-output name=image::$(ko build)"
 
       # Publish the container to Google Artifact Registry
       - name: Push to Google Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          image: build.image
+          image: "${{ steps.build.outputs.image}}"
           service: spdx-detector
           region: us-central1
